@@ -7,7 +7,6 @@ import br.com.lucashilles.view.Quadro;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,12 +18,18 @@ public class JanelaPrincipalController {
     private Quadro quadro;
     private Secao secao = new Secao();
 
+    /**
+     * Construtor que inicializa as variaveis.
+     */
     public JanelaPrincipalController() {
         quadro = new Quadro();
         janela = new JanelaPrincipal();
         initController();
     }
 
+    /**
+     * Adiciona os eventos necessários aos botões.
+     */
     private void initController() {
         janela.getjBtnAceitar().addActionListener(e -> aceitar());
         janela.getjBtnAdicionar().addActionListener(e -> adicionarVertice());
@@ -35,35 +40,51 @@ public class JanelaPrincipalController {
         janela.getjPQuadro().add(quadro);
         janela.pack();
         janela.setLocationRelativeTo(null);
+
+        janela.getjLInfo().setText(String.format("Área %.2f", secao.getArea()));
+
+        janela.setVisible(true);
     }
 
     private void aceitar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Invoca a janela para criar um novo vertice, captura o vértice criado e se
+     * ele for válido é adicionado à seção, à lista e ao desenho.
+     */
     private void adicionarVertice() {
-//        float x, y;
-//        x = Float.parseFloat(JOptionPane.showInputDialog("Coordenada X"));
-//        y = Float.parseFloat(JOptionPane.showInputDialog("Coordenada y"));
-//        Vertice v = new Vertice(x, y);
         DadosVerticeController dvc = new DadosVerticeController(janela);
         Vertice v = dvc.getVertice();
         if (v != null) {
             secao.adicionarVertice(v);
+            if (secao.getCentroide() != null) {
+                quadro.setCentroide(secao.getCentroide());
+            }
             quadro.updateVerticeList(secao.getVertices());
 
             DefaultListModel model = (DefaultListModel) janela.getjLListaDeVertices().getModel();
             model.addElement("x: " + v.getX() + " y: " + v.getY());
         }
+        janela.getjLInfo().setText(String.format("Área %.2f", secao.getArea()));
     }
 
+    /**
+     * Reinicia a entrada da seção.
+     */
     private void limpar() {
         secao = new Secao();
+        quadro.setCentroide(null);
         quadro.updateVerticeList(new ArrayList<>());
         DefaultListModel model = (DefaultListModel) janela.getjLListaDeVertices().getModel();
         model.clear();
     }
 
+    /**
+     * Remove o vértice selecionado seguindo os mesmos passo da adição de
+     * vértices.
+     */
     private void removerVertice() {
         int removeIndex;
         removeIndex = janela.getjLListaDeVertices().getSelectedIndex();

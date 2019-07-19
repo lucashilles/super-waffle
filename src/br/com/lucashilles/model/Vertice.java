@@ -34,5 +34,7 @@ public class Vertice {
         this.y = y;
     }
     
-    
+    public float distanciaAte(Vertice v) {
+        return (float) Math.sqrt(Math.pow(x - v.getX(),2) + Math.pow(y - v.getY(), 2));
+    }
 }

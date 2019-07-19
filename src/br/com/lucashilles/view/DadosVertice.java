@@ -61,6 +61,11 @@ public class DadosVertice extends javax.swing.JPanel {
         jTFX.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFX.setText("0.0");
         jTFX.setPreferredSize(new java.awt.Dimension(75, 23));
+        jTFX.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTFFocusGained(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 0);
@@ -76,6 +81,11 @@ public class DadosVertice extends javax.swing.JPanel {
         jTFY.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTFY.setText("0.0");
         jTFY.setPreferredSize(new java.awt.Dimension(75, 23));
+        jTFY.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTFFocusGained(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 5, 0);
@@ -89,6 +99,14 @@ public class DadosVertice extends javax.swing.JPanel {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         add(jBtnAceitar, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTFFocusGained
+        if (!(evt.getSource() instanceof JTextField)) {
+            return;
+        }
+        JTextField txt = (JTextField) evt.getSource();
+        txt.selectAll();
+    }//GEN-LAST:event_jTFFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

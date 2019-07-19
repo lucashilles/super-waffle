@@ -22,8 +22,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         DefaultListCellRenderer renderer = (DefaultListCellRenderer) jLListaDeVertices.getCellRenderer();
         renderer.setHorizontalAlignment(JLabel.CENTER);
-        
-        setVisible(true);
+
+        //setVisible(true);
     }
 
     public JButton getjBtnAceitar() {
@@ -50,6 +50,10 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         return jPQuadro;
     }
 
+    public JLabel getjLInfo() {
+        return jLInfo;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +70,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jPQuadro = new javax.swing.JPanel();
         jBtnAceitar = new javax.swing.JButton();
         jBtnLimpar = new javax.swing.JButton();
+        jLInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Configurar Seção");
@@ -100,6 +105,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         jBtnLimpar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jBtnLimpar.setText("Limpar");
 
+        jLInfo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLInfo.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,9 +123,12 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                         .addGap(1, 1, 1)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPQuadro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnAceitar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnLimpar)))
@@ -138,7 +149,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
                     .addComponent(jBtnAdicionar)
                     .addComponent(jBtnRemover)
                     .addComponent(jBtnAceitar)
-                    .addComponent(jBtnLimpar))
+                    .addComponent(jBtnLimpar)
+                    .addComponent(jLInfo))
                 .addContainerGap())
         );
 
@@ -150,6 +162,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBtnAdicionar;
     private javax.swing.JButton jBtnLimpar;
     private javax.swing.JButton jBtnRemover;
+    private javax.swing.JLabel jLInfo;
     private javax.swing.JList<String> jLListaDeVertices;
     private javax.swing.JPanel jPQuadro;
     private javax.swing.JScrollPane jScrollPane2;
