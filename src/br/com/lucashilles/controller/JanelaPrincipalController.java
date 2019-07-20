@@ -41,7 +41,7 @@ public class JanelaPrincipalController {
         janela.pack();
         janela.setLocationRelativeTo(null);
 
-        janela.getjLInfo().setText(String.format("Área %.2f", secao.getArea()));
+        janela.getjLInfo().setText("");
 
         janela.setVisible(true);
     }
@@ -57,17 +57,20 @@ public class JanelaPrincipalController {
     private void adicionarVertice() {
         DadosVerticeController dvc = new DadosVerticeController(janela);
         Vertice v = dvc.getVertice();
+        String text = "";
         if (v != null) {
             secao.adicionarVertice(v);
             if (secao.getCentroide() != null) {
                 quadro.setCentroide(secao.getCentroide());
+                text = "C: (" + String.format("%.2f", secao.getCentroide().getX()) + ", " + String.format("%.2f", secao.getCentroide().getY()) + ") - " ; 
             }
             quadro.updateVerticeList(secao.getVertices());
 
             DefaultListModel model = (DefaultListModel) janela.getjLListaDeVertices().getModel();
             model.addElement("x: " + v.getX() + " y: " + v.getY());
         }
-        janela.getjLInfo().setText(String.format("Área %.2f", secao.getArea()));
+        
+        janela.getjLInfo().setText(text + String.format("A: %.2f", secao.getArea()));
     }
 
     /**
